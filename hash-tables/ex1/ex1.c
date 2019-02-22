@@ -10,18 +10,24 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
   // YOUR CODE HERE
   Answer *answer = malloc(sizeof(Answer));
 
-  for (int i=0; i<length; i++){
+  for (int i = 0; i < length; i++)
+  {
     hash_table_insert(ht, weights[i], i);
   }
-  for (int index=0; index<length; index++){
+  for (int index = 0; index < length; index++)
+  {
     int complement = hash_table_retrieve(ht, limit - weights[index]);
-    if (complement != -1){
-      if (index > complement){
+    if (complement != -1)
+    {
+      if (index > complement)
+      {
         answer->index_1 = index;
         answer->index_2 = complement;
         destroy_hash_table(ht);
         return answer;
-      } else {
+      }
+      else
+      {
         answer->index_1 = complement;
         answer->index_2 = index;
         destroy_hash_table(ht);
